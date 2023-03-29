@@ -18,7 +18,6 @@ def social_interactions(idx, centers, angles, dds, stds=None, social_distance=Fa
     """
     return flag of alert if social distancing is violated
     """
-    print("boop")
     group_list = [int(idx)]
 
     # A) Check whether people are close together
@@ -28,7 +27,6 @@ def social_interactions(idx, centers, angles, dds, stds=None, social_distance=Fa
     distances = [math.sqrt((xx - centers[i][0]) ** 2 + (zz - centers[i][1]) ** 2)
                  for i, _ in enumerate(centers)]
     sorted_idxs = np.argsort(distances)
-    print(sorted_idxs)
     indices = [idx_t for idx_t in sorted_idxs[1:]
                if distances[idx_t] <= threshold_dist]
 
@@ -68,7 +66,6 @@ def social_interactions(idx, centers, angles, dds, stds=None, social_distance=Fa
                                                   social_distance=social_distance))
             if (sum(f_forms) / n_samples) >= threshold_prob:
                 group_list.append(int(idx_t))
-    print(group_list)
     return group_list
 
 
